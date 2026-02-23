@@ -1,16 +1,286 @@
 <div align="center">
   
-<!-- Cosmic Background Banner -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GAuravgiy87/GAuravgiy87/main/assets/cosmic-banner.svg">
-  <img width="100%" src="https://raw.githubusercontent.com/GAuravgiy87/GAuravgiy87/main/assets/cosmic-banner.svg" alt="Cosmic Background">
-</picture>
+<!-- Cosmic Background Banner with Floating Particles -->
+<svg width="100%" height="400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <radialGradient id="nebula1">
+      <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nebula2">
+      <stop offset="0%" style="stop-color:#7b2ff7;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="nebula3">
+      <stop offset="0%" style="stop-color:#f72585;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="400" fill="#000000"/>
+  <circle cx="200" cy="150" r="250" fill="url(#nebula1)">
+    <animate attributeName="cx" values="200;250;200" dur="20s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="150;180;150" dur="25s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="250;280;250" dur="15s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="800" cy="250" r="280" fill="url(#nebula2)">
+    <animate attributeName="cx" values="800;750;800" dur="22s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="250;220;250" dur="28s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="280;310;280" dur="18s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="100" r="200" fill="url(#nebula3)">
+    <animate attributeName="cx" values="500;550;500" dur="24s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="100;130;100" dur="20s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="200;230;200" dur="16s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1000" cy="100" r="220" fill="url(#nebula1)">
+    <animate attributeName="cx" values="1000;950;1000" dur="26s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="100;130;100" dur="23s" repeatCount="indefinite"/>
+  </circle>
+  <g filter="url(#starGlow)">
+    <circle cx="150" cy="80" r="1.5" fill="#00f5ff" opacity="0.8">
+      <animate attributeName="cy" values="80;90;80" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="180" r="1.2" fill="#00f5ff" opacity="0.7">
+      <animate attributeName="cy" values="180;170;180" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="580" cy="60" r="1.8" fill="#00f5ff" opacity="0.9">
+      <animate attributeName="cy" values="60;70;60" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="320" r="1.3" fill="#00f5ff" opacity="0.6">
+      <animate attributeName="cy" values="320;310;320" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="920" cy="150" r="1.6" fill="#00f5ff" opacity="0.8">
+      <animate attributeName="cy" values="150;160;150" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1050" cy="280" r="1.4" fill="#00f5ff" opacity="0.7">
+      <animate attributeName="cy" values="280;270;280" dur="7.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="240" cy="250" r="1.4" fill="#7b2ff7" opacity="0.7">
+      <animate attributeName="cy" values="250;240;250" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="300" r="1.7" fill="#7b2ff7" opacity="0.8">
+      <animate attributeName="cy" values="300;310;300" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="680" cy="120" r="1.3" fill="#7b2ff7" opacity="0.6">
+      <animate attributeName="cy" values="120;130;120" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="850" cy="80" r="1.5" fill="#7b2ff7" opacity="0.8">
+      <animate attributeName="cy" values="80;90;80" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1100" cy="200" r="1.6" fill="#7b2ff7" opacity="0.7">
+      <animate attributeName="cy" values="200;190;200" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="340" r="1.5" fill="#f72585" opacity="0.8">
+      <animate attributeName="cy" values="340;330;340" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="380" cy="100" r="1.3" fill="#f72585" opacity="0.7">
+      <animate attributeName="cy" values="100;110;100" dur="7.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="620" cy="280" r="1.6" fill="#f72585" opacity="0.8">
+      <animate attributeName="cy" values="280;270;280" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="780" cy="180" r="1.4" fill="#f72585" opacity="0.7">
+      <animate attributeName="cy" values="180;190;180" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="980" cy="320" r="1.7" fill="#f72585" opacity="0.8">
+      <animate attributeName="cy" values="320;310;320" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="200" r="1.2" fill="#ffffff" opacity="0.6">
+      <animate attributeName="cy" values="200;210;200" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="50" r="1.4" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="50;60;50" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="520" cy="220" r="1.6" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="220;210;220" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="720" cy="40" r="1.3" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="40;50;40" dur="7.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="890" cy="240" r="1.5" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="240;230;240" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1150" cy="120" r="1.4" fill="#ffffff" opacity="0.7">
+      <animate attributeName="cy" values="120;130;120" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <g opacity="0.5">
+    <circle cx="200" cy="120" r="0.8" fill="#00f5ff">
+      <animate attributeName="cy" values="120;130;120" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="280" r="0.8" fill="#7b2ff7">
+      <animate attributeName="cy" values="280;270;280" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="150" r="0.8" fill="#f72585">
+      <animate attributeName="cy" values="150;160;150" dur="8.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="220" r="0.8" fill="#ffffff">
+      <animate attributeName="cy" values="220;210;220" dur="9.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="90" r="0.8" fill="#00f5ff">
+      <animate attributeName="cy" values="90;100;90" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1080" cy="340" r="0.8" fill="#7b2ff7">
+      <animate attributeName="cy" values="340;330;340" dur="10s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
+
+<!-- Personal Logo -->
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="holoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1">
+        <animate attributeName="stop-color" values="#00f5ff;#7b2ff7;#f72585;#00f5ff" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" style="stop-color:#7b2ff7;stop-opacity:1">
+        <animate attributeName="stop-color" values="#7b2ff7;#f72585;#00f5ff;#7b2ff7" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#f72585;stop-opacity:1">
+        <animate attributeName="stop-color" values="#f72585;#00f5ff;#7b2ff7;#f72585" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="10" result="coloredBlur2"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur2"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="innerGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#000000"/>
+  <g transform="translate(200, 200)">
+    <polygon points="0,-120 103.92,-60 103.92,60 0,120 -103.92,60 -103.92,-60" 
+             fill="none" stroke="url(#holoGrad)" stroke-width="3" opacity="0.4" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" 
+                        from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  <g transform="translate(200, 200)">
+    <polygon points="0,-90 77.94,-45 77.94,45 0,90 -77.94,45 -77.94,-45" 
+             fill="none" stroke="url(#holoGrad)" stroke-width="2.5" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" 
+                        from="360 0 0" to="0 0 0" dur="15s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  <g transform="translate(200, 200)">
+    <g stroke="url(#holoGrad)" stroke-width="2.5" fill="none" filter="url(#innerGlow)">
+      <path d="M -30,-15 L 30,-15 L 30,45 L -30,45 Z" opacity="0.8"/>
+      <path d="M -15,-30 L 45,-30 L 45,30 L -15,30 Z" opacity="0.6"/>
+      <line x1="-30" y1="-15" x2="-15" y2="-30" opacity="0.7"/>
+      <line x1="30" y1="-15" x2="45" y2="-30" opacity="0.7"/>
+      <line x1="30" y1="45" x2="45" y2="30" opacity="0.7"/>
+      <line x1="-30" y1="45" x2="-15" y2="30" opacity="0.7"/>
+    </g>
+    <g fill="none" stroke="url(#holoGrad)" stroke-width="4" stroke-linecap="round" filter="url(#glow)">
+      <path d="M -55,-25 L -70,-25 L -70,25 L -55,25">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M 55,-25 L 70,-25 L 70,25 L 55,25">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+      </path>
+    </g>
+    <g fill="url(#holoGrad)" opacity="0.8">
+      <rect x="-5" y="-65" width="10" height="15" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="-5" y="50" width="10" height="15" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="2s"/>
+      </rect>
+      <rect x="-72" y="-5" width="15" height="10" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="1s"/>
+      </rect>
+      <rect x="57" y="-5" width="15" height="10" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="3s"/>
+      </rect>
+    </g>
+    <circle cx="0" cy="0" r="15" fill="url(#holoGrad)" filter="url(#glow)">
+      <animate attributeName="r" values="15;20;15" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#ffffff" opacity="0.9">
+      <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <g>
+      <circle cx="0" cy="-50" r="3" fill="#00f5ff" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="-50" r="3" fill="#f72585" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="120 0 0" to="480 0 0" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="-50" r="3" fill="#7b2ff7" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="240 0 0" to="600 0 0" dur="4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+  <g stroke="url(#holoGrad)" stroke-width="2" opacity="0.5">
+    <line x1="20" y1="20" x2="50" y2="20"/>
+    <line x1="20" y1="20" x2="20" y2="50"/>
+    <line x1="380" y1="20" x2="350" y2="20"/>
+    <line x1="380" y1="20" x2="380" y2="50"/>
+    <line x1="20" y1="380" x2="50" y2="380"/>
+    <line x1="20" y1="380" x2="20" y2="350"/>
+    <line x1="380" y1="380" x2="350" y2="380"/>
+    <line x1="380" y1="380" x2="380" y2="350"/>
+  </g>
+  <g opacity="0.6">
+    <circle cx="80" cy="80" r="2" fill="#00f5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="80" r="2" fill="#f72585">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+    <circle cx="80" cy="320" r="2" fill="#7b2ff7">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+    <circle cx="320" cy="320" r="2" fill="#00f5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+  </g>
+</svg>
 
 </div>
-
-<p align="center">
-  <img src="./logo.svg" width="300" alt="Personal Logo">
-</p>
 
 <h1 align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=500&lines=Hey+there!+%F0%9F%91%8B;I'm+Gaurav+Singh;Full+Stack+Developer+%F0%9F%9A%80;Game+Developer+%F0%9F%8E%AE;3D+Artist+%F0%9F%8E%A8;AI%2FML+Enthusiast+%F0%9F%A4%96" alt="Typing SVG" />
