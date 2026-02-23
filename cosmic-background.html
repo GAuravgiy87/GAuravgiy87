@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            background: #000000;
+        }
+        
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Particle system
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = Math.random() * 0.5 + 0.1;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                
+                // Color variation for nebula effect
+                const colorChoice = Math.random();
+                if (colorChoice < 0.3) {
+                    this.color = `rgba(0, 245, 255, ${this.opacity})`; // Cyan
+                } else if (colorChoice < 0.6) {
+                    this.color = `rgba(123, 47, 247, ${this.opacity})`; // Purple
+                } else if (colorChoice < 0.8) {
+                    this.color = `rgba(247, 37, 133, ${this.opacity})`; // Pink
+                } else {
+                    this.color = `rgba(255, 255, 255, ${this.opacity})`; // White
+                }
+            }
+            
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                
+                // Floating effect
+                this.x += Math.sin(this.y * 0.01) * 0.2;
+                
+                if (this.y > canvas.height + 10 || this.x < -10 || this.x > canvas.width + 10) {
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Add glow effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+        
+        // Nebula clouds
+        class NebulaCloud {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.radius = Math.random() * 150 + 100;
+                this.speedX = (Math.random() - 0.5) * 0.1;
+                this.speedY = (Math.random() - 0.5) * 0.1;
+                
+                const colorChoice = Math.random();
+                if (colorChoice < 0.33) {
+                    this.color1 = 'rgba(0, 245, 255, 0.03)';
+                    this.color2 = 'rgba(0, 245, 255, 0)';
+                } else if (colorChoice < 0.66) {
+                    this.color1 = 'rgba(123, 47, 247, 0.03)';
+                    this.color2 = 'rgba(123, 47, 247, 0)';
+                } else {
+                    this.color1 = 'rgba(247, 37, 133, 0.03)';
+                    this.color2 = 'rgba(247, 37, 133, 0)';
+                }
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < -this.radius) this.x = canvas.width + this.radius;
+                if (this.x > canvas.width + this.radius) this.x = -this.radius;
+                if (this.y < -this.radius) this.y = canvas.height + this.radius;
+                if (this.y > canvas.height + this.radius) this.y = -this.radius;
+            }
+            
+            draw() {
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, this.color1);
+                gradient.addColorStop(1, this.color2);
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        
+        // Create particles and nebula clouds
+        const particles = [];
+        const particleCount = 300;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        const nebulaClouds = [];
+        const nebulaCount = 5;
+        for (let i = 0; i < nebulaCount; i++) {
+            nebulaClouds.push(new NebulaCloud());
+        }
+        
+        // Animation loop
+        function animate() {
+            // Create trailing effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw nebula clouds
+            nebulaClouds.forEach(cloud => {
+                cloud.update();
+                cloud.draw();
+            });
+            
+            // Draw particles
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Start animation
+        animate();
+    </script>
+</body>
+</html>

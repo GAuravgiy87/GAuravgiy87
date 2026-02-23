@@ -1,5 +1,15 @@
+<div align="center">
+  
+<!-- Cosmic Background Banner -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GAuravgiy87/GAuravgiy87/main/assets/cosmic-banner.svg">
+  <img width="100%" src="https://raw.githubusercontent.com/GAuravgiy87/GAuravgiy87/main/assets/cosmic-banner.svg" alt="Cosmic Background">
+</picture>
+
+</div>
+
 <p align="center">
-  <img src="./logo.svg" width="300" alt="Gaurav Singh Logo">
+  <img src="./logo.svg" width="300" alt="Personal Logo">
 </p>
 
 <h1 align="center">

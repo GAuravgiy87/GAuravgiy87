@@ -1,34 +1,32 @@
-<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
   <defs>
-    <!-- Smooth gradient -->
-    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1">
-        <animate attributeName="stop-color" values="#6366f1;#8b5cf6;#ec4899;#6366f1" dur="6s" repeatCount="indefinite"/>
+    <!-- Holographic gradient -->
+    <linearGradient id="holoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1">
+        <animate attributeName="stop-color" values="#00f5ff;#7b2ff7;#f72585;#00f5ff" dur="6s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1">
-        <animate attributeName="stop-color" values="#8b5cf6;#ec4899;#6366f1;#8b5cf6" dur="6s" repeatCount="indefinite"/>
+      <stop offset="50%" style="stop-color:#7b2ff7;stop-opacity:1">
+        <animate attributeName="stop-color" values="#7b2ff7;#f72585;#00f5ff;#7b2ff7" dur="6s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1">
-        <animate attributeName="stop-color" values="#ec4899;#6366f1;#8b5cf6;#ec4899" dur="6s" repeatCount="indefinite"/>
+      <stop offset="100%" style="stop-color:#f72585;stop-opacity:1">
+        <animate attributeName="stop-color" values="#f72585;#00f5ff;#7b2ff7;#f72585" dur="6s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
     
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1"/>
-    </linearGradient>
-    
-    <!-- Glow effect -->
+    <!-- Glow filter -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="10" result="coloredBlur2"/>
       <feMerge>
+        <feMergeNode in="coloredBlur2"/>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
     
-    <filter id="textGlow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+    <!-- Inner glow -->
+    <filter id="innerGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -37,141 +35,130 @@
   </defs>
   
   <!-- Background -->
-  <rect width="600" height="200" fill="#0f172a" rx="20"/>
+  <rect width="400" height="400" fill="#000000"/>
   
-  <!-- Decorative grid pattern -->
-  <g opacity="0.05">
-    <line x1="0" y1="50" x2="600" y2="50" stroke="#ffffff" stroke-width="1"/>
-    <line x1="0" y1="100" x2="600" y2="100" stroke="#ffffff" stroke-width="1"/>
-    <line x1="0" y1="150" x2="600" y2="150" stroke="#ffffff" stroke-width="1"/>
-    <line x1="150" y1="0" x2="150" y2="200" stroke="#ffffff" stroke-width="1"/>
-    <line x1="300" y1="0" x2="300" y2="200" stroke="#ffffff" stroke-width="1"/>
-    <line x1="450" y1="0" x2="450" y2="200" stroke="#ffffff" stroke-width="1"/>
+  <!-- Outer rotating hexagon (represents 3D/Game space) -->
+  <g transform="translate(200, 200)">
+    <polygon points="0,-120 103.92,-60 103.92,60 0,120 -103.92,60 -103.92,-60" 
+             fill="none" stroke="url(#holoGrad)" stroke-width="3" opacity="0.4" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" 
+                        from="0 0 0" to="360 0 0" dur="20s" repeatCount="indefinite"/>
+    </polygon>
   </g>
   
-  <!-- Left decorative element -->
-  <g transform="translate(60, 100)">
-    <!-- Animated circle -->
-    <circle cx="0" cy="0" r="35" fill="none" stroke="url(#textGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)">
-      <animate attributeName="r" values="35;38;35" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    
-    <circle cx="0" cy="0" r="28" fill="none" stroke="url(#accentGrad)" stroke-width="1.5" opacity="0.4">
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        from="0 0 0"
-        to="360 0 0"
-        dur="10s"
-        repeatCount="indefinite"/>
-      <animate attributeName="stroke-dasharray" values="0 176;88 88;176 0;0 176" dur="5s" repeatCount="indefinite"/>
-    </circle>
-    
-    <!-- Code symbol -->
-    <text x="0" y="10" font-family="'Fira Code', monospace" font-size="32" font-weight="600" fill="url(#textGrad)" text-anchor="middle" filter="url(#textGlow)">
-      &lt;/&gt;
-    </text>
+  <!-- Middle hexagon ring -->
+  <g transform="translate(200, 200)">
+    <polygon points="0,-90 77.94,-45 77.94,45 0,90 -77.94,45 -77.94,-45" 
+             fill="none" stroke="url(#holoGrad)" stroke-width="2.5" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" 
+                        from="360 0 0" to="0 0 0" dur="15s" repeatCount="indefinite"/>
+    </polygon>
   </g>
   
-  <!-- Main text -->
-  <g transform="translate(300, 100)">
-    <!-- Name -->
-    <text x="0" y="-15" 
-          font-family="'Inter', 'SF Pro Display', sans-serif" 
-          font-size="48" 
-          font-weight="700" 
-          fill="url(#textGrad)" 
-          text-anchor="middle"
-          letter-spacing="2"
-          filter="url(#textGlow)">
-      GAURAV SINGH
-    </text>
+  <!-- Central symbol - fusion of code, game controller, and 3D cube -->
+  <g transform="translate(200, 200)">
     
-    <!-- Underline animation -->
-    <line x1="-140" y1="-5" x2="140" y2="-5" stroke="url(#textGrad)" stroke-width="3" stroke-linecap="round" opacity="0.6">
-      <animate attributeName="stroke-dasharray" values="0 280;280 0" dur="2s" fill="freeze"/>
-    </line>
+    <!-- 3D Cube wireframe (representing 3D art) -->
+    <g stroke="url(#holoGrad)" stroke-width="2.5" fill="none" filter="url(#innerGlow)">
+      <!-- Front face -->
+      <path d="M -30,-15 L 30,-15 L 30,45 L -30,45 Z" opacity="0.8"/>
+      <!-- Back face -->
+      <path d="M -15,-30 L 45,-30 L 45,30 L -15,30 Z" opacity="0.6"/>
+      <!-- Connecting lines -->
+      <line x1="-30" y1="-15" x2="-15" y2="-30" opacity="0.7"/>
+      <line x1="30" y1="-15" x2="45" y2="-30" opacity="0.7"/>
+      <line x1="30" y1="45" x2="45" y2="30" opacity="0.7"/>
+      <line x1="-30" y1="45" x2="-15" y2="30" opacity="0.7"/>
+    </g>
     
-    <!-- Subtitle -->
-    <text x="0" y="25" 
-          font-family="'Fira Code', monospace" 
-          font-size="16" 
-          font-weight="400" 
-          fill="#94a3b8" 
-          text-anchor="middle"
-          letter-spacing="1">
-      Full Stack Developer • Game Dev • 3D Artist
-    </text>
+    <!-- Code brackets integrated into design -->
+    <g fill="none" stroke="url(#holoGrad)" stroke-width="4" stroke-linecap="round" filter="url(#glow)">
+      <!-- Left bracket -->
+      <path d="M -55,-25 L -70,-25 L -70,25 L -55,25">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <!-- Right bracket -->
+      <path d="M 55,-25 L 70,-25 L 70,25 L 55,25">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+      </path>
+    </g>
     
-    <!-- Animated dots -->
+    <!-- Game controller D-pad elements -->
+    <g fill="url(#holoGrad)" opacity="0.8">
+      <!-- Top -->
+      <rect x="-5" y="-65" width="10" height="15" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Bottom -->
+      <rect x="-5" y="50" width="10" height="15" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="2s"/>
+      </rect>
+      <!-- Left -->
+      <rect x="-72" y="-5" width="15" height="10" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="1s"/>
+      </rect>
+      <!-- Right -->
+      <rect x="57" y="-5" width="15" height="10" rx="2">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" begin="3s"/>
+      </rect>
+    </g>
+    
+    <!-- Central energy core (pulsing) -->
+    <circle cx="0" cy="0" r="15" fill="url(#holoGrad)" filter="url(#glow)">
+      <animate attributeName="r" values="15;20;15" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Inner core -->
+    <circle cx="0" cy="0" r="8" fill="#ffffff" opacity="0.9">
+      <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Orbiting particles (representing creativity/innovation) -->
     <g>
-      <circle cx="-50" cy="45" r="2" fill="url(#accentGrad)" opacity="0">
-        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+      <circle cx="0" cy="-50" r="3" fill="#00f5ff" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="0" cy="45" r="2" fill="url(#textGrad)" opacity="0">
-        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+      <circle cx="0" cy="-50" r="3" fill="#f72585" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="120 0 0" to="480 0 0" dur="4s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="50" cy="45" r="2" fill="url(#accentGrad)" opacity="0">
-        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.4s"/>
+      <circle cx="0" cy="-50" r="3" fill="#7b2ff7" filter="url(#innerGlow)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="240 0 0" to="600 0 0" dur="4s" repeatCount="indefinite"/>
       </circle>
     </g>
   </g>
   
-  <!-- Right decorative element -->
-  <g transform="translate(540, 100)">
-    <!-- Rotating square -->
-    <rect x="-25" y="-25" width="50" height="50" fill="none" stroke="url(#textGrad)" stroke-width="2" opacity="0.5" rx="5" filter="url(#glow)">
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        from="0 0 0"
-        to="360 0 0"
-        dur="15s"
-        repeatCount="indefinite"/>
-    </rect>
+  <!-- Corner tech accents -->
+  <g stroke="url(#holoGrad)" stroke-width="2" opacity="0.5">
+    <line x1="20" y1="20" x2="50" y2="20"/>
+    <line x1="20" y1="20" x2="20" y2="50"/>
     
-    <!-- Inner rotating square -->
-    <rect x="-15" y="-15" width="30" height="30" fill="none" stroke="url(#accentGrad)" stroke-width="1.5" opacity="0.4" rx="3">
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        from="360 0 0"
-        to="0 0 0"
-        dur="10s"
-        repeatCount="indefinite"/>
-    </rect>
+    <line x1="380" y1="20" x2="350" y2="20"/>
+    <line x1="380" y1="20" x2="380" y2="50"/>
     
-    <!-- Center dot -->
-    <circle cx="0" cy="0" r="4" fill="url(#textGrad)" filter="url(#glow)">
-      <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-    </circle>
+    <line x1="20" y1="380" x2="50" y2="380"/>
+    <line x1="20" y1="380" x2="20" y2="350"/>
+    
+    <line x1="380" y1="380" x2="350" y2="380"/>
+    <line x1="380" y1="380" x2="380" y2="350"/>
   </g>
   
-  <!-- Corner accents -->
-  <circle cx="30" cy="30" r="3" fill="url(#accentGrad)" opacity="0.4">
-    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
-  </circle>
-  
-  <circle cx="570" cy="30" r="3" fill="url(#textGrad)" opacity="0.4">
-    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" begin="1s"/>
-  </circle>
-  
-  <circle cx="30" cy="170" r="3" fill="url(#textGrad)" opacity="0.4">
-    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" begin="2s"/>
-  </circle>
-  
-  <circle cx="570" cy="170" r="3" fill="url(#accentGrad)" opacity="0.4">
-    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" begin="1.5s"/>
-  </circle>
-  
   <!-- Floating particles -->
-  <circle cx="200" cy="50" r="1.5" fill="#ffffff" opacity="0.3">
-    <animate attributeName="cy" values="50;60;50" dur="4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  
-  <circle cx="400" cy="150" r="1.5" fill="#ffffff" opacity="0.3">
-    <animate attributeName="cy" values="150;140;150" dur="5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="5s" repeatCount="indefinite"/>
-  </circle>
+  <g opacity="0.6">
+    <circle cx="80" cy="80" r="2" fill="#00f5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="80" r="2" fill="#f72585">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+    <circle cx="80" cy="320" r="2" fill="#7b2ff7">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+    <circle cx="320" cy="320" r="2" fill="#00f5ff">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+  </g>
 </svg>
